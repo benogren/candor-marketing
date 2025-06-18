@@ -113,7 +113,7 @@
   @apply text-slate-500;
 
   h1 {
-    @apply text-4xl font-bold text-cerulean;
+    @apply text-4xl font-light text-cerulean;
   }
   h2 {
     @apply text-2xl font-semibold my-4 text-cerulean mt-12;

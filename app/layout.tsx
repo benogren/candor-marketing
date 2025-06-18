@@ -49,6 +49,9 @@ export default function RootLayout({
       lang="en"
       className={pt_sans.className}
     >
+      <head>
+      <meta name="apple-mobile-web-app-title" content="Candor" />
+      </head>
       <body className="">
         <main className="">
           {/* Meta Pixel Code */}

@@ -1,4 +1,5 @@
 import { BlogPosts } from 'app/components/posts'
+import { radley } from 'app/components/fonts'
 
 export const metadata = {
   title: 'Blog',
@@ -7,9 +8,13 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <section>
-      <h1 className="font-semibold text-2xl mb-8 tracking-tighter">My Blog</h1>
+    <>
+    <h2 className={`text-3xl sm:text-4xl font-light text-nonphotoblue-600 text-center ${radley.className} mt-12 mb-4`}>
+        Recent Posts:
+    </h2>
+    <section className="container mx-auto px-4 pb-8 mb-12">
       <BlogPosts />
     </section>
+    </>
   )
 }

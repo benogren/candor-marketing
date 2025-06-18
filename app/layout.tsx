@@ -1,25 +1,26 @@
 import './global.css'
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
-import { Navbar } from './components/nav'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import Footer from './components/footer'
 import { baseUrl } from './sitemap'
+import { pt_sans } from './components/fonts'
+import Header from './components/header'
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'Next.js Portfolio Starter',
-    template: '%s | Next.js Portfolio Starter',
+    template: '%s | Candor',
+    default: 'Candor - AI-Powered 360-Degree Feedback',
   },
-  description: 'This is my portfolio.',
+  description: 'Transform workplace feedback from a dreaded annual event into an ongoing conversation that drives growth with Candor\'s AI-powered platform.',
+  keywords: ['360 feedback', 'performance management', 'Performance Reviews', 'Employee Recognition', 'Employee Engagement', 'AI-Powered Feedback', 'Continuous Feedback', 'Feedback Culture', 'Employee Development'],
   openGraph: {
-    title: 'My Portfolio',
-    description: 'This is my portfolio.',
+    title: 'Candor - AI-Powered 360-Degree Feedback',
+    description: 'Transform workplace feedback from a dreaded annual event into an ongoing conversation that drives growth with Candor\'s AI-powered platform.',
     url: baseUrl,
-    siteName: 'My Portfolio',
+    siteName: 'Candor',
     locale: 'en_US',
     type: 'website',
   },
@@ -46,15 +47,63 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cx(
-        'text-black bg-white dark:text-white dark:bg-black',
-        GeistSans.variable,
-        GeistMono.variable
-      )}
+      className={pt_sans.className}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
-          <Navbar />
+      <body className="">
+        <main className="">
+          {/* Meta Pixel Code */}
+          <Script id="facebook-pixel" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window,document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '1020654256702161');
+              fbq('track', 'PageView');
+            `}
+          </Script>
+          <noscript>
+            <img 
+              height="1" 
+              width="1" 
+              style={{ display: 'none' }}
+              src="https://www.facebook.com/tr?id=1020654256702161&ev=PageView&noscript=1"
+              alt=""
+            />
+          </noscript>
+
+          {/* LinkedIn Insight Tag */}
+          <Script id="linkedin-insight" strategy="afterInteractive">
+            {`
+              _linkedin_partner_id = "7235884";
+              window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+              window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+              
+              (function(l) {
+                if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+                window.lintrk.q=[]}
+                var s = document.getElementsByTagName("script")[0];
+                var b = document.createElement("script");
+                b.type = "text/javascript";b.async = true;
+                b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+                s.parentNode.insertBefore(b, s);
+              })(window.lintrk);
+            `}
+          </Script>
+          
+          {/* LinkedIn noscript fallback */}
+          <div dangerouslySetInnerHTML={{ 
+            __html: `
+              <noscript>
+                <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=7235884&fmt=gif" />
+              </noscript>
+            `
+          }} />
+          <Header />
           {children}
           <Footer />
           <Analytics />

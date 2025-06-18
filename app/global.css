@@ -110,17 +110,19 @@
 }
 
 .blog-post {
+  @apply text-slate-500;
+
   h1 {
-    @apply text-3xl font-bold tracking-tight;
+    @apply text-4xl font-bold text-cerulean;
   }
   h2 {
-    @apply text-2xl font-semibold tracking-tight my-4;
+    @apply text-2xl font-semibold my-4 text-cerulean mt-12;
   }
   h3 {
-    @apply text-xl font-semibold tracking-tight my-4;
+    @apply text-xl font-normal my-4 text-cerulean mt-8;
   }
   a {
-    @apply text-cerulean underline underline-offset-4 hover:text-cerulean-700;
+    @apply text-slate-500 underline decoration-slate-200 underline-offset-4 hover:decoration-slate-500;
   }
   p {
     @apply my-4 text-base leading-7;
